@@ -1,0 +1,37 @@
+<AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
+  <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml" i:nil="true" />
+  <clientauth>
+    <aad>
+      <audience>a232b46e-0246-465e-9da9-3a9c29c33c53</audience>
+      <cachesigninuser>true</cachesigninuser>
+      <enablegrouptoken>false</enablegrouptoken>
+      <issuer>https://sts.windows.net/445a9c95-0f9d-4953-9db1-bc4a45dd1220/</issuer>
+      <tenant>https://login.microsoftonline.com/445a9c95-0f9d-4953-9db1-bc4a45dd1220</tenant>
+    </aad>
+    <cert i:nil="true" />
+    <type>aad</type>
+    <usernamepass i:nil="true" />
+  </clientauth>
+  <clientconfig i:nil="true" />
+  <name>vnet-CarlaSimulatorVM-Academics-01</name>
+  <protocolconfig>
+    <sslprotocolConfig>
+      <transportprotocol>tcp</transportprotocol>
+    </sslprotocolConfig>
+  </protocolconfig>
+  <serverlist>
+    <ServerEntry>
+      <displayname i:nil="true" />
+      <fqdn>azuregateway-77030046-3810-407a-a0f9-5df3aacb1445-2960ab59e7b1.vpn.azure.com</fqdn>
+    </ServerEntry>
+  </serverlist>
+  <servervalidation>
+    <Cert>
+      <hash>DF3C24F9BFD666761B268073FE06D1CC8D4F82A4</hash>
+      <issuer i:nil="true" />
+    </Cert>
+    <serversecret>d2dd840439f196dd19a7fd7c6ee08adac5ab597cd78a682ea7bc8c51ad511e4e449fa519e8d3f87a50605c16bb04cd854e80c80ae5eb0521a55733328788e42a30252a4d09ed7832cfb0b011f7c2723ba36ef03ff85f254ea8d9d3e8009babfa87e2917c9df50f1fa805916d5e6d2c73f44c93414e904bd9a8b616f14974dda12c99d2909a60e47cea83de1b58b0744a982658c8e7f8aea6d8f90d711213f36ee3e338907842f0d002620728fa9f81e19994a85ea4070b79db806ea53f3958b18ce74b3594f2e0cf2aa8c3f2601f9671da1b6a2d6eb3199a01c9c66d1ca0bd01cdd0b8569186e94a1e1e76209808726144288e08e4c3b1400156d795f79189aa</serversecret>
+    <type>cert</type>
+  </servervalidation>
+  <version>1</version>
+</AzVpnProfile>
