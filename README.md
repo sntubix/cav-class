@@ -19,3 +19,12 @@ Make sure your terminal is in the same directory as the requirements.txt file.
 
 In order to run the simulation files on the remote ubix VM, don't forget to configure and connect to the Azure VPN, using the azurevpnconfig configuration file
 
+# Dataset
+
+----
+
+The perception module rely on 2 different datasets.
+
+- the first one is a traffic sign classification dataset that can be downloaded from this repository directly.
+- the second one is a detection dataset containing 8 classes, from cars to traffic lights. It is located at https://app.roboflow.com/carla-test/modified-carla/3
+
