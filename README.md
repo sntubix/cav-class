@@ -11,13 +11,11 @@ This repository contains the python files and Jupyter notebooks for the main pro
 
 ----
 
-To use this code, you will need to download the CARLA open-source simulator at https://github.com/carla-simulator/carla
+To use this code, you will need to download the CARLA open-source simulator at https://github.com/carla-simulator/carla/releases/tag/0.9.16
 
 After creating and installing your conda environment, activate it and install the requirements with: conda install --file requirements.txt
 
 Make sure your terminal is in the same directory as the requirements.txt file.
-
-In order to run the simulation files on the remote ubix VM, don't forget to configure and connect to the Azure VPN, using the azurevpnconfig configuration file
 
 # Dataset
 
