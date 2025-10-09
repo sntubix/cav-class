@@ -13,7 +13,7 @@ This repository contains the python files and Jupyter notebooks for the main pro
 
 To use this code, you will need to download the CARLA open-source simulator at https://github.com/carla-simulator/carla/releases/tag/0.9.16
 
-After creating and installing your conda environment, activate it and install the requirements with: conda install --file requirements.txt
+After installing conda creating your environment, activate it and install the requirements with: conda install --file requirements.txt
 
 Make sure your terminal is in the same directory as the requirements.txt file.
 
