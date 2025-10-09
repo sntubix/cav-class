@@ -59,7 +59,7 @@ import carla
 from carla import ColorConverter as cc
 
 from behavior_agent import BehaviorAgent  # pylint: disable=import-error
-from agents.navigation.basic_agent import BasicAgent  # pylint: disable=import-error
+from basic_agent import BasicAgent  # pylint: disable=import-error
 from agents.navigation.constant_velocity_agent import ConstantVelocityAgent  # pylint: disable=import-error
 
 
@@ -169,7 +169,12 @@ class World(object):
                 print('Please add some Vehicle Spawn Point to your UE4 scene.')
                 sys.exit(1)
             spawn_points = self.map.get_spawn_points()
-            spawn_point = random.choice(spawn_points) if spawn_points else carla.Transform()
+
+            if args.scenario == 1:
+                spawn_point = spawn_points[6]
+            else:
+                spawn_point = random.choice(spawn_points) if spawn_points else carla.Transform()
+            
             self.player = self.world.try_spawn_actor(blueprint, spawn_point)
             self.modify_vehicle_physics(self.player)
 
@@ -738,10 +743,11 @@ def game_loop(args):
         world = World(client.get_world(), hud, args)
         controller = KeyboardControl(world)
         if args.agent == "Basic":
-            agent = BasicAgent(world.player, 30)
-            agent.follow_speed_limits(True)
+            print(f'Creating a basic agent at {args.speed} km/h.')
+            agent = BasicAgent(world.player, target_speed = args.speed)
+            # agent.follow_speed_limiwwts(True)
         elif args.agent == "Constant":
-            agent = ConstantVelocityAgent(world.player, 30)
+            agent = ConstantVelocityAgent(world.player, args.speed)
             ground_loc = world.world.ground_projection(world.player.get_location(), 5)
             if ground_loc:
                 world.player.set_location(ground_loc.location + carla.Location(z=0.01))
@@ -751,7 +757,13 @@ def game_loop(args):
 
         # Set the agent destination
         spawn_points = world.map.get_spawn_points()
-        destination = random.choice(spawn_points).location
+        if args.scenario == 1:
+            destination = spawn_points[40].location
+        elif args.scenario == 2:
+            destination = spawn_points[54].location
+        else:
+            destination = random.choice(spawn_points).location
+        
         agent.set_destination(destination)
 
         clock = pygame.time.Clock()
@@ -850,7 +862,7 @@ def main():
         "-a", "--agent", type=str,
         choices=["Behavior", "Basic", "Constant"],
         help="select which agent to run",
-        default="Behavior")
+        default="Basic")
     argparser.add_argument(
         '-b', '--behavior', type=str,
         choices=["cautious", "normal", "aggressive"],
@@ -861,6 +873,17 @@ def main():
         help='Set seed for repeating executions (default: None)',
         default=None,
         type=int)
+    argparser.add_argument(
+        '--scenario',
+        help='Choose an experimental scenario (default: None)',
+        type=int,
+        choices= [1,2,3],
+        default=1)
+    argparser.add_argument(
+        '--speed',
+        help='Choose a speed limit for the vehicle (default: 30)',
+        type=int,
+        default=30)
 
     args = argparser.parse_args()
 

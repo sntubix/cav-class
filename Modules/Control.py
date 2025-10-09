@@ -146,11 +146,13 @@ class PIDLateralController():
         if wv_linalg == 0:
             _dot = 1
         else:
-            _dot = math.acos(np.clip(np.dot(w_vec, v_vec) / (wv_linalg), -1.0, 1.0))
-        _cross = np.cross(v_vec, w_vec)
-        #change the sign of the dot product depending on if we are turning left or right
-        if _cross[2] < 0:
-            _dot *= -1.0
+            _dot = ##TODO
+
+        _cross = ##TODO
+
+        #change the sign of the dot product depending on whether we are turning left or right
+        
+        ##TODO
  
         self._e_buffer.append(_dot)
 
