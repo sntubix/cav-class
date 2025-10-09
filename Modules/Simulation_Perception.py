@@ -899,8 +899,7 @@ def main():
     argparser.add_argument(
         '-m',
         metavar='MODEL',
-        help='provide a path to the detection model',
-        default='model/yolo_fine_tuned.pt')
+        help='provide a path to the detection model')
     argparser.add_argument(
         '-s', '--seed',
         help='Set seed for repeating executions (default: None)',
