@@ -170,11 +170,8 @@ class World(object):
                 sys.exit(1)
             spawn_points = self.map.get_spawn_points()
 
-            if args.scenario == 1:
-                spawn_point = spawn_points[6]
-            else:
-                spawn_point = random.choice(spawn_points) if spawn_points else carla.Transform()
-            
+            spawn_point = spawn_points[6]
+
             self.player = self.world.try_spawn_actor(blueprint, spawn_point)
             self.modify_vehicle_physics(self.player)
 
@@ -757,12 +754,8 @@ def game_loop(args):
 
         # Set the agent destination
         spawn_points = world.map.get_spawn_points()
-        if args.scenario == 1:
-            destination = spawn_points[40].location
-        elif args.scenario == 2:
-            destination = spawn_points[54].location
-        else:
-            destination = random.choice(spawn_points).location
+        destination = spawn_points[40].location
+
         
         agent.set_destination(destination)
 
